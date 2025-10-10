@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduExpress - The Fast Track to Master Any Topic</title>
+    <meta name="description" content="Find the most relevant educational YouTube videos for any topic. Smart AI-powered search with detailed coverage analysis.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-graduation-cap"></i>
+                   <p> EduExpress</p>
+                </h1>
+                <p class="subtitle">
+                    Discover the most relevant educational YouTube videos with AI-powered topic analysis
+                </p>
+            </div>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="intro-section">
+            <div class="intro-container">
+                <div class="intro-content">
+                    <div class="intro-text">
+                        <h2 class="intro-title">
+                            <i class="fas fa-brain"></i>
+                            Intelligent Video Discovery
+                        </h2>
+                        <p class="intro-description">
+                            Our advanced AI analyzes YouTube content to find the most relevant educational videos for your specific topics. 
+                            Get detailed coverage analysis and topic breakdowns to ensure you're learning exactly what you need.
+                        </p>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-search-plus"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Smart Search</h3>
+                                    <p>AI-powered topic matching finds the most relevant content</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Coverage Analysis</h3>
+                                    <p>Detailed breakdown of how well each video covers your topics</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Time Efficient</h3>
+                                    <p>Find the best educational content in seconds, not hours</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-Result"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h3>Precise Results</h3>
+                                    <p>Get videos that specifically address your learning goals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-visual">
+                        <div class="visual-card">
+                            <div class="card-header">
+                                <div class="card-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="card-title">AI Analysis</div>
+                            </div>
+                            <div class="card-content">
+                                <div class="analysis-item">
+                                    <span class="topic-name">Machine Learning</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85%"></div>
+                                    </div>
+                                    <span class="percentage">85%</span>
+                                </div>
+                                <div class="analysis-item">
+                                    <span class="topic-name">Neural Networks</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 72%"></div>
+                                    </div>
+                                    <span class="percentage">72%</span>
+                                </div>
+                                <div class="analysis-item">
+                                    <span class="topic-name">Deep Learning</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 68%"></div>
+                                    </div>
+                                    <span class="percentage">68%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <div class="input-group">
+                    <label for="topics-input" class="input-label">
+                        <i class="fas fa-search"></i>
+                        Enter Topics to Search
+                    </label>
+                    <textarea 
+                        id="topics-input" 
+                        class="topics-input" 
+                        placeholder="e.g., binomial probability, normal distribution, standard deviation"
+                        rows="3"
+                    ></textarea>
+                </div>
+                
+                <button id="search-btn" class="search-btn">
+                    <i class="fas fa-search"></i>
+                    Find Videos
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading hidden">
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Searching for the best educational videos...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="error" class="error hidden">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="error-message">An error occurred</span>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results" class="results hidden">
+            <div class="results-header">
+                <h2 class="results-title">
+                    <i class="fas fa-video"></i>
+                    Search Results
+                </h2>
+                <span class="results-count" id="results-count">0</span>
+            </div>
+            
+            <div id="videos-container" class="videos-container">
+                <!-- Video cards will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <h3 class="footer-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            EduExpress
+                        </h3>
+                        <p class="footer-description">
+                            Empowering learners with AI-driven educational content discovery. 
+                            Find the perfect YouTube videos for your learning journey.
+                        </p>
+                    </div>
+                    
+                    <div class="footer-links-section">
+                        <div class="footer-column">
+                            <h4 class="footer-column-title">Features</h4>
+                            <ul class="footer-links-list">
+                                <li><a href="#search">Smart Search</a></li>
+                                <li><a href="#analysis">AI Analysis</a></li>
+                                <li><a href="#coverage">Coverage Reports</a></li>
+                                <li><a href="#topics">Topic Matching</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4 class="footer-column-title">Resources</h4>
+                            <ul class="footer-links-list">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="#help">Help Center</a></li>
+                                <li><a href="#tutorials">Tutorials</a></li>
+                                <li><a href="#examples">Examples</a></li>
+                                <li><a href="#tips">Learning Tips</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4 class="footer-column-title">Support</h4>
+                            <ul class="footer-links-list">
+                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="#feedback">Feedback</a></li>
+                                <li><a href="#bug-report">Report Bug</a></li>
+                                <li><a href="#feature-request">Feature Request</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <div class="footer-info">
+                        <p class="footer-powered">
+                            <i class="fas fa-cogs"></i>
+                            Powered by YouTube Data API v3 and Google Gemini AI
+                        </p>
+                        <p class="footer-copyright">
+                            © 2025 EduExpress. All rights reserved.
+                        </p>
+                    </div>
+                    
+                    <div class="footer-actions">
+                        <a href="#" id="health-check" class="footer-action-btn">
+                            <i class="fas fa-heartbeat"></i>
+                            API Status
+                        </a>
+                        <a href="#" id="clear-results" class="footer-action-btn">
+                            <i class="fas fa-trash-alt"></i>
+                            Clear Results
+                        </a>
+                        <a href="#top" class="footer-action-btn scroll-to-top">
+                            <i class="fas fa-arrow-up"></i>
+                            Back to Top
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Video Card Template -->
+    <template id="video-card-template">
+        <div class="video-card">
+            <div class="video-thumbnail">
+                <img class="thumbnail-img" src="" alt="">
+                <div class="coverage-badge">
+                    <span class="coverage-percentage">0%</span>
+                </div>
+            </div>
+            
+            <div class="video-content">
+                <h3 class="video-title"></h3>
+                
+                <div class="video-channel">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="channel-name"></span>
+                </div>
+
+                <!-- Coverage Section -->
+                <div class="coverage-section">
+                    <h4 class="coverage-title">Topic Coverage</h4>
+                    <div class="coverage-bar">
+                        <div class="coverage-fill"></div>
+                    </div>
+                    
+                    <div class="topics-breakdown">
+                        <!-- Topic items will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Video Actions -->
+                <div class="video-actions">
+                    <a href="#" class="watch-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                        Watch on YouTube
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Topic Item Template -->
+    <template id="topic-item-template">
+        <div class="topic-item">
+            <div class="topic-info">
+                <span class="topic-name"></span>
+                <span class="topic-score"></span>
+            </div>
+            <div class="topic-bar">
+                <div class="topic-fill"></div>
+            </div>
+        </div>
+    </template>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

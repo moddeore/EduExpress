@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/frontend/index.html"
+    },
+    {
+      "src": "/about",
+      "dest": "/frontend/about.html"
+    },
+    {
+      "src": "/contact",
+      "dest": "/frontend/contact.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
+    }
+  ],
+  "env": {
+    "YOUTUBE_API_KEY": "@youtube_api_key",
+    "GEMINI_API_KEY": "@gemini_api_key"
+  }
+}

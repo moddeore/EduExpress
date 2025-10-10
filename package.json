@@ -1,0 +1,37 @@
+{
+  "name": "eduexpress",
+  "version": "1.0.0",
+  "description": "AI-powered educational video discovery platform - Find the most relevant YouTube videos for any topic",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "echo 'Building for production...' && echo 'Build complete!'",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "netlify deploy --prod",
+    "deploy:firebase": "firebase deploy",
+    "setup": "node -e \"console.log('Setting up EduExpress...'); require('fs').copyFileSync('env.example', '.env'); console.log('✅ Created .env file. Please add your API keys.');\""
+  },
+  "keywords": ["youtube", "ai", "education", "video-search", "learning", "students", "edtech"],
+  "author": "Mod Deore",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moddeore/eduexpress.git"
+  },
+  "homepage": "https://eduexpress.vercel.app",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.0",
+    "@google/generative-ai": "^0.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
+
