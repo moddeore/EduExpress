@@ -117,7 +117,7 @@ async function analyzeVideoCoverage(video, topics) {
   try {
     const { GoogleGenerativeAI } = require('@google/generative-ai');
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = `
 Analyze this YouTube video for topic coverage:
@@ -266,4 +266,7 @@ app.listen(PORT, () => {
     console.log(`⚠️  Gemini API key not found - using mock analysis`);
   }
 });
+
+// Export the app for Vercel Serverless Functions
+module.exports = app;
 

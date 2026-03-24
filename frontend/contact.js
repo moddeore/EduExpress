@@ -82,8 +82,8 @@ class ContactPage {
         this.showLoadingState();
 
         try {
-            // Simulate form submission (replace with actual API call)
-            await this.simulateFormSubmission();
+            // Submit form to the user's email via FormSubmit API
+            await this.submitToEmail();
             this.showSuccessMessage();
             this.resetForm();
         } catch (error) {
@@ -241,13 +241,30 @@ class ContactPage {
     }
 
     /**
-     * Simulate form submission
-     * @returns {Promise} Promise that resolves after delay
+     * Submit form to FormSubmit API
+     * @returns {Promise} Promise that resolves when the email is sent
      */
-    simulateFormSubmission() {
-        return new Promise((resolve) => {
-            setTimeout(resolve, 2000); // Simulate 2-second delay
+    async submitToEmail() {
+        const formData = new FormData(this.contactForm);
+        // Optional: add a custom subject for the email
+        formData.append('_subject', 'New Contact Form Submission - EduExpress');
+        
+        // Prevent reCAPTCHA for AJAX (if needed, though standard is false)
+        formData.append('_captcha', 'false');
+
+        const response = await fetch('https://formsubmit.co/ajax/moddeore@gmail.com', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
         });
+
+        if (!response.ok) {
+            throw new Error('Failed to send email');
+        }
+
+        return await response.json();
     }
 
     /**
