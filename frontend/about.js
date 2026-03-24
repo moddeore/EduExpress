@@ -37,6 +37,7 @@ class AboutPage {
                 link.style.transform = 'scale(0.9)';
                 setTimeout(() => {
                     link.style.transform = '';
+                    window.open(link.href, '_blank'); // Open in a new tab smoothly
                 }, 150);
             });
         });
@@ -354,9 +355,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
+            if (this.getAttribute('href') === '#') return; // Skip empty anchors
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
+                e.preventDefault();
                 target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
